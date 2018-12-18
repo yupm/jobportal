@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+<head>
+    <title>Board</title>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+    <style>
+        body         { padding-top:30px; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="page-header text-center">
+        <h1><span class="fa fa-anchor"></span>Postings</h1>
+    </div>
+
+    <div >
+        <% posts.forEach(function(post){ %>
+            <div class="panel panel-default">
+                    <div class="panel-heading">Title: <%= post.title %></div>
+                    <div class="panel-body">
+                        <p><%= post.description %></p>
+                    </div>
+                    <div class="panel-footer">By user: </div>
+                </div>
+        <% }); %>         
+    </div>
+
+</div>
+</body>
+</html>
