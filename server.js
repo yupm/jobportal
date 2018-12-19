@@ -4,11 +4,12 @@
 // get all the tools we need
 var express  = require('express');
 var app      = express();
-var port     = process.env.PORT || 8080;
+var port     = process.env.PORT || 8081;
 var mongoose = require('mongoose');
 var passport = require('passport');
 var flash    = require('connect-flash');
-
+var multer = require('multer');
+var     path = require('path');
 require('./app/models/post');
 
 
@@ -29,12 +30,14 @@ app.use(morgan('dev')); // log every request to the console
 app.use(cookieParser()); // read cookies (needed for auth)
 app.use(bodyParser.json()); // get information from html forms
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(multer({ dest: '../public/upload/temp' }).single('file'));
+app.use('/bucket', express.static(path.join(__dirname, './public')));
 
 app.set('view engine', 'ejs'); // set up ejs for templating
 
 // required for passport
 app.use(session({
-    secret: 'ilovescotchscotchyscotchscotch', // session secret
+    secret: 'iwantagoodjobthatpays$100001235821dollars', // session secret
     resave: true,
     saveUninitialized: true
 }));

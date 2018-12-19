@@ -1,12 +1,14 @@
 const mongoose = require('mongoose');
 const Post = mongoose.model('posts');
-
+var path = require('path');
+var fs = require('fs-extra');
 module.exports = function(app, passport) {
 
 // normal routes ===============================================================
 
     // show the home page (will also have our login links)
     app.get('/', function(req, res) {
+
         res.render('index.ejs');
     });
 
@@ -15,9 +17,11 @@ module.exports = function(app, passport) {
     app.get('/board', async(req, res)=> {
 
         const posts = await Post.find().limit(5);
+        console.log(posts);
 
         res.render('board.ejs', {posts});
     });
+
     app.get('/board/:page', async(req, res)=> {
         const posts = await Post.find().limit(5).skip(req.params.page*5);
 
@@ -29,21 +33,80 @@ module.exports = function(app, passport) {
         res.render('post.ejs');
     });
 
-    app.post('/post', isLoggedIn, async (req, res)=>{
-        const { title, description, topics } = req.body;
-        const posting = new Post({
-            title,
-            description,
-            topics: topics.split(',')
-        });
+    app.post('/post', async (req, res)=>{
 
-        try{
-            await posting.save();
-            res.redirect('/board');
-        }
-        catch(err){
-            res.status(422).send(err);
-        }
+        console.log(req);
+        var saveImage = function () {
+            var possible = 'abcdefghijklmnopqrstuvwxyz0123456789',
+                folderPath = req.user.id + '/';
+            var imgUrl = folderPath
+            for (var i = 0; i < 20; i += 1) {
+                imgUrl += possible.charAt(Math.floor(Math.random() * possible.length));
+            }
+            
+            Post.find({ filename: imgUrl }, function (err, images) {
+                if (images.length > 0) {
+                    saveImage();
+                } else {
+                    //do all the existing work..
+
+                    // var tempPath = req.file.path,
+                    //      ext = path.extname(req.file.path).toLowerCase(),
+                    //      targetPath = path.resolve('./public/upload/' + imgUrl + ext);
+                    var tempPath = req.file.path,
+                        ext = path.extname(req.file.originalname).toLowerCase(),
+                        
+                        targetPath = path.resolve('./public/upload/' + imgUrl + ext);
+
+                    if (ext === '.png' || ext === '.jpg' || ext === '.jpeg' || ext === '.gif') {
+                        fs.ensureDir('./public/upload/' + folderPath)
+                        .then(() => {
+                            console.log('success!');
+
+                            fs.rename(tempPath, targetPath, function (err) {
+                                if (err) throw err;
+    
+                          //      console.log("This is the req body");
+                         //       console.log(req);
+    
+                                const { title, description, topics } = req.body;
+                                const posting = new Post({
+                                    title,
+                                    description,
+                                    filename: imgUrl + ext,
+                                    poster: req.user.id,
+                                    topics: topics.split(',')
+                                });
+    
+                                posting.save(function (err, image) {
+                      //              console.log('Successfully inserted image: ' + image.filename);
+                                   // res.redirect('/images/' + imgUrl + ext);
+                                    res.redirect('/board');
+                                });
+                                //
+                            });
+
+
+                        })
+                        .catch(err => {
+                            console.error(err)
+                        })
+
+                    } else {
+                        fs.unlink(tempPath, function () {
+                            if (err) throw err;
+
+                            res.json(500, { error: 'Only image files are allowed.' });
+                        });
+                    }
+
+                }
+
+            });
+
+        };
+
+        saveImage();
 
     });
 
@@ -236,8 +299,14 @@ module.exports = function(app, passport) {
 
 // route middleware to ensure user is logged in
 function isLoggedIn(req, res, next) {
-    if (req.isAuthenticated())
-        return next();
 
-    res.redirect('/');
+    if (req.isAuthenticated())
+    {
+        console.log("Is auth");
+        return next();
+    }
+   
+
+    console.log("Redirect");
+    res.redirect('/auth');
 }

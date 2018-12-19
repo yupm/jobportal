@@ -5,7 +5,7 @@ var postSchema = new Schema({
     title: String,
     poster: { type: Schema.Types.ObjectId, ref: 'user'},
     description: String,
-    picture: String,
+    filename: String,
     topics: [String]
 });
 
