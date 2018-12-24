@@ -77,7 +77,9 @@ saveImage();
 
 // route middleware to ensure user is logged in
 function isLoggedIn(req, res, next) {
-    if (req.isAuthenticated())
+   // if (req.isAuthenticated())
+   console.log("In log in check");
+   console.log(req.user);
         return next();
 
     res.redirect('/');

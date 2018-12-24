@@ -20,7 +20,7 @@
                     <div class="panel-heading">Title: <%= post.title %></div>
                     <div class="panel-body">
                         <% if (post.filename != null) { %>
-                            <img src="/bucket/upload/<%= post.filename %>" alt="Italian Trulli">
+                            <img src="/bucket/upload/<%= post.filename %>" style="width: 200px; height: 200px;" class="img-thumbnail" alt="Italian Trulli">
                         <% } %>
                     
                         <p><%= post.description %></p>
