@@ -37,6 +37,11 @@ module.exports = function(app, passport) {
             failureFlash : true // allow flash messages
         }));
 
+
+        app.get('/signup2', function(req, res) {
+            res.render('signup2.ejs', { message: req.flash('signupMessage') });
+        });
+
     // facebook -------------------------------
 
         // send to facebook to do the authentication

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  <meta name="generator" content="Responsive Bootstrap Builder 2.0.165">
+  <title>register</title>
+  <link rel="stylesheet" href="bucket/css/bootstrap4.min.css">
+  <link rel="stylesheet" href="bucket/css/wireframe-theme.min.css">
+  <script>document.createElement( "picture" );</script>
+  <script src="bucket/js/picturefill.min.js" class="picturefill" async="async"></script>
+  <link rel="stylesheet" href="bucket/css/main.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:400,b">
+</head>
+
+<body>
+  <header class="row full-width" id="home">
+    <div class="col-xs-12 header-cover col-xl-12 push-xl-0 offset-xl-0">
+      <div class="subgrid">
+        <nav class="row navbar bg-faded">
+          <div class="col-xs-12"><a href="index.html" class="link-button-glyph btn menu-button hidden-md-up" data-toggle="collapse" data-target="#main-nav" aria-controls="main-nav" aria-expanded="false" aria-label="Toggle navigation"><span class="glyph-for-button menu-icon"><i class="coffeecup-icons-menu7"></i></span><span class="link-button-text menu-text">Job portal</span></a>
+            <div class="container-fluid nav-container">
+              <div class="container-fluid collapse navbar-toggleable-sm" id="main-nav"><a class="link-text nav-link" href="index.html#menu" target="_parent" data-target="index.html#menu">Home</a><a class="link-text nav-link" href="index.html#review">Search Jobs</a><a class="link-text nav-link" href="https://www.coffeecup.com/bootstrap-builder/" title="CoffeeCup Software Bootstrap Builder">Post Job<br></a><a class="link-text nav-link" href="https://www.coffeecup.com/bootstrap-builder/" title="CoffeeCup Software Bootstrap Builder">My profile<br></a><a class="link-text nav-link" href="about-us.html">Log in<br></a><a class="link-text nav-link" href="about-us.html">Register<br></a>
+              </div>
+            </div>
+          </div>
+        </nav>
+        <div class="row">
+          <div class="col-xs-12 col-xl-12 custom-1490-col-xl-12">
+            <div class="container-fluid input-group mb-3"><input value="" name="text-name" type="text" class="form-control"><button type="button" class="btn">Search</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+  <main class="row row-1" id="the-place">
+      <div class="col-xs-12 push-md-0 col-md-8 pull-md-4 col-xl-9 offset-xl-0 push-xl-0 pull-xl-3 column-2" id="review">
+          <div class="container-fluid container-1">
+                <div class="container">
+                        <div class="container">
+                                <div >
+                                
+                                    <h1><span class="fa fa-sign-in"></span> Signup</h1>
+                                
+                                    <% if (message.length > 0) { %>
+                                        <div class="alert alert-danger"><%= message %></div>
+                                    <% } %>
+                                
+                                    <!-- LOGIN FORM -->
+                                    <form action="/signup" method="post">
+                                        <div class="form-group">
+                                            <label>Username</label>
+                                            <input type="text" class="form-control" name="username">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Email</label>
+                                            <input type="text" class="form-control" name="email">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Password</label>
+                                            <input type="password" class="form-control" name="password">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>I am a:  </label>
+                                                <select name="profileType">
+                                                <option value="candidate">Job Seeker</option>
+                                                <option value="employer">Employer</option>
+                                              </select>                      
+                                            </div>
+                                
+                                        <button type="submit" class="btn btn-warning btn-lg">Signup</button>
+                                    </form>
+                                
+                                    <hr>
+                                
+                                    <p>Already have an account? <a href="/login">Login</a></p>
+                                    <p>Or go <a href="/">home</a>.</p>
+                                
+                                
+                                </div>
+                                </div>
+                </div>
+            </div>
+  </main>
+
+  <div class="row first-section last-section">
+    <div class="col-xs-12">
+      <h6 class="vibe-heading">Find the best foreign workers for your business</h6>
+      <p class="paragraph vibe-p">Catch the right wave, eat the good fish. <span class="bold">Dance the night</span> away, relax the next day. We’ll let you know what’s happening if you tell us how to reach you. No, we won’t spam (this week).</p>
+      <div class="subgrid">
+        <div class="row">
+          <div class="col-xs-12 subgrid-column-1"><a class="link-button btn subscribe" href="#">REGISTER</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="js/jquery.min.js"></script>
+  <script src="js/tether.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+<script type="text/javascript">
+      $(function() {
+        $('a[href*=\\#]:not([href=\\#])').click(function() {
+          if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+            var target = $(this.hash);
+            target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+            if (target.length) {
+              $('html,body').animate({
+                scrollTop: target.offset().top
+              }, 1000);
+              return;
+            }
+          }
+        });
+      });
+    </script>
+</body>
+
+</html>
