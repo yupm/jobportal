@@ -19,6 +19,16 @@ module.exports = function(app) {
         res.render('board.ejs', {posts});
     });
 
+
+    app.get('/board2', async(req, res)=> {
+
+        const posts = await Post.find().limit(5).populate('poster');
+
+       // console.log(posts);
+        res.render('board2.ejs', {posts});    
+
+    });
+
 }
 
 

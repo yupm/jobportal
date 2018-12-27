@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  <meta name="generator" content="Responsive Bootstrap Builder 2.0.165">
+  <title>Index</title>
+  <link rel="stylesheet" href="bucket/css/bootstrap4.min.css">
+  <link rel="stylesheet" href="bucket/css/wireframe-theme.min.css">
+  <script>document.createElement( "picture" );</script>
+  <script src="bucket/js/picturefill.min.js" class="picturefill" async="async"></script>
+  <link rel="stylesheet" href="bucket/css/main.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:400,b">
+</head>
+
+<body>
+  <header class="row full-width" id="home">
+    <div class="col-xs-12 header-cover col-xl-12 push-xl-0 offset-xl-0">
+      <div class="subgrid">
+        <nav class="row navbar bg-faded">
+          <div class="col-xs-12">
+            <div class="container-fluid nav-container">
+              <div class="container-fluid collapse navbar-toggleable-sm" id="main-nav"><a class="link-text nav-link" href="/" target="_parent" >Home</a><a class="link-text nav-link" href="/">Search Jobs</a><a class="link-text nav-link" href="/post" title="Post">Post Job<br></a><a class="link-text nav-link" href="https://www.coffeecup.com/bootstrap-builder/" title="CoffeeCup Software Bootstrap Builder">My profile<br></a><a class="link-text nav-link" href="about-us.html">Log in<br></a><a class="link-text nav-link" href="about-us.html">Register<br></a>
+              </div>
+            </div>
+          </div>
+        </nav>
+        <div class="row">
+          <div class="col-xs-12 col-xl-12">
+            <div class="container-fluid input-group mb-3"><input value="" name="text-name" type="text" class="form-control"><button type="button" class="btn">Search</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+  <main class="row first-section" id="the-place">
+    <aside class="col-xs-12 col-md-4 push-md-8 pull-md-0 col-xl-3 push-xl-9 pull-xl-0 column-1">
+      <div class="subgrid">
+        <div class="row aside-row">
+          <div class="col-xs-12 aside-column push-md-0 col-md-12 col-sm-6">
+            <div class="container-fluid aside-top-container"><span class="glyph aside-icon"><i class="coffeecup-icons-clock3"></i></span>
+            </div>
+            <div class="container-fluid aside-bottom-container">
+              <h6 class="aside-heading">HOURS:</h6>
+              <p class="paragraph aside-p"><span class="bold">Mo - Thu</span> 11:30 am - 11 pm<br>
+              </p>
+              <p class="paragraph aside-p"><span class="bold">Fri - Sat</span> 13:30 pm - 1:30 am<br>
+              </p>
+              <p class="paragraph aside-p"><span class="bold">Sun</span> closed</p>
+            </div>
+          </div>
+          <div class="col-xs-12 aside-column push-md-0 col-md-12 col-sm-6">
+            <div class="container-fluid aside-top-container"><span class="glyph aside-icon"><i class="coffeecup-icons-phone-wave"></i></span>
+            </div>
+            <div class="container-fluid aside-bottom-container">
+              <h6 class="aside-heading">GIVE US A CALL:</h6>
+              <p class="paragraph aside-p">(407) 241 642</p>
+            </div>
+          </div>
+          <div class="col-xs-12 aside-column push-md-0 col-md-12 col-sm-6">
+            <div class="container-fluid aside-top-container"><span class="glyph aside-icon"><i class="coffeecup-icons-bubbles3"></i></span>
+            </div>
+            <div class="container-fluid aside-bottom-container">
+              <h6 class="aside-heading">WE’RE SOCIAL:</h6><a href="#" target="_blank" class="social-image social-icons"><img class="googleplus-icon" src="./socialicons/webicon-googleplus.png" alt="Social Icon"></a><a href="#" target="_blank" class="social-image social-icons"><img class="twitter-icon" src="./socialicons/webicon-twitter.png" alt="Social Icon"></a><a href="#" target="_blank" class="social-image social-icons"><img class="facebook-icon" src="./socialicons/webicon-facebook.png" alt="Social Icon"></a>
+            </div>
+          </div>
+          <div class="col-xs-12 aside-column push-md-0 col-md-12 col-sm-6">
+            <div class="container-fluid aside-top-container"><span class="glyph aside-icon"><i class="coffeecup-icons-location4"></i></span>
+            </div>
+            <div class="container-fluid aside-bottom-container">
+              <h6 class="aside-heading">COME ON OVER:</h6>
+              <p class="paragraph aside-p">1362 Atlanta Street</p>
+              <p class="paragraph aside-p">near ‘The Beach'</p>
+              <p class="paragraph aside-p">Atlanta, GA 30339</p><a class="link-text map-link" href="#map-anchor" role="button" data-toggle="collapse" aria-expanded="false" aria-controls="our-map" data-target="#our-map">FIND US ON THE MAP</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </aside>
+    <div class="col-xs-12 push-md-0 col-md-8 pull-md-4 main-content-column col-xl-9 offset-xl-0 push-xl-0 pull-xl-3" id="review">
+        <div >
+            <% posts.forEach(function(post){ %>
+                <div>
+                        <div class="paragraph intro-p">Title: <%= post.title %></div>
+                        <div class="paragraph main-para">
+                            <% if (post.filename != null) { %>
+                                <img src="/bucket/upload/<%= post.filename %>" style="width: 200px; height: 200px;" class="img-thumbnail" alt="Italian Trulli">
+                            <% } %>
+                        
+                            <p class="paragraph main-para"><%= post.description %></p>
+                        </div>
+                        <div class="paragraph main-para">By user: <%= post.poster.local.email %></div>
+                    </div>
+            <% }); %>         
+              
+        </div>
+            </div>
+  </main>
+  <div class="row map-row collapse" id="our-map">
+    <div class="col-xs-12">
+      <div class="html-element map-element"><style>.embed-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; } .embed-container iframe, .embed-container object, .embed-container embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }</style><div class='embed-container'><iframe src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3376.2953460118656!2d-84.36380923996343!3d34.0230297332942!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88f50cacdd6a7eb9%3A0x500aee21d89b3103!2s1362+Atlanta+St%2C+Roswell%2C+GA+30075!5e0!3m2!1sen!2sus!4v1470430012321' width='1200' height='1250' frameborder='0' style='border:0' allowfullscreen></iframe></div></div>
+    </div>
+  </div>
+  <div class="row first-section last-section">
+    <div class="col-xs-12">
+      <h6 class="vibe-heading">Find the best foreign workers for your business</h6>
+      <p class="paragraph vibe-p">Catch the right wave, eat the good fish. <span class="bold">Dance the night</span> away, relax the next day. We’ll let you know what’s happening if you tell us how to reach you. No, we won’t spam (this week).</p>
+      <div class="subgrid">
+        <div class="row">
+          <div class="col-xs-12 subgrid-column-1"><a class="link-button btn subscribe" href="#">REGISTER</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="js/jquery.min.js"></script>
+  <script src="js/tether.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+<script type="text/javascript">
+      $(function() {
+        $('a[href*=\\#]:not([href=\\#])').click(function() {
+          if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+            var target = $(this.hash);
+            target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+            if (target.length) {
+              $('html,body').animate({
+                scrollTop: target.offset().top
+              }, 1000);
+              return;
+            }
+          }
+        });
+      });
+    </script>
+</body>
+
+</html>

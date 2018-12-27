@@ -68,8 +68,14 @@ module.exports = function(app) {
 
         };
 
-saveImage();
+        saveImage();
 
+    });
+
+
+    app.post('/cloud/post', isLoggedIn, async (req, res)=>{
+
+        
     });
 
 }
