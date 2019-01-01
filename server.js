@@ -17,6 +17,7 @@ var morgan       = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser   = require('body-parser');
 var session      = require('express-session');
+const MongoStore = require('connect-mongo')(session);
 
 var configDB = require('./config/database.js');
 
@@ -39,7 +40,8 @@ app.set('view engine', 'ejs'); // set up ejs for templating
 app.use(session({
     secret: 'iwantagoodjobthatpays$100001235821dollars', // session secret
     resave: true,
-    saveUninitialized: true
+    saveUninitialized: true,
+    store: new MongoStore({mongooseConnection: mongoose.connection })
 }));
 app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
